@@ -1,0 +1,19 @@
+version: '2'
+services:
+  db: 
+    build: db
+    ports:
+     - "27017:27017"
+  api:
+    build: api
+    ports:
+     - "3000:3000"
+    depends_on:
+     - ui
+    links:
+     - db 
+  ui:
+    build: ui
+    ports:
+     - "8080:8080"
+
