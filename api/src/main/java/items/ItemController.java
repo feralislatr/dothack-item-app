@@ -60,7 +60,7 @@ public class ItemController {
     public ResponseEntity<Item> useItem(@PathVariable("id") String id){ //Integer id
     	//Item item = itemMap.get(id);
         Item item = itemRepo.findOne(id);
-    	if (item.getQuantity() == 0){
+    	if (item.getQuantity() == 1){ //changed from 0
     		System.out.println("You have no more "+ item.getName()+"s");
     		itemRepo.delete(id);
     		return null;

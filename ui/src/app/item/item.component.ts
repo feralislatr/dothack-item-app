@@ -32,28 +32,26 @@ export class ItemComponent implements OnInit {
   	this.itemService.getItems().then(items => this.items = items);
   }
 
-  //bring up item modal
-  getInfo(): void {
-    this.router.navigate(['/info', this.currentItem.id]);
-  }
+  // //bring up item modal
+  // getInfo(): void {
+  //   this.router.navigate(['/info', this.currentItem.id]);
+  // }
 
   //@TODO
-  create(name: string): void {
+  newItem(quantity: number, name: string, desc: string): void {
     name = name.trim();
-    if (!name) { 
+    desc = desc.trim();
+    if (!quantity || !name || !desc) { 
+      console.log("not enough things");
       return; 
     }
-    this.itemService.create(name)
+    this.itemService.create(quantity, name, desc)
       .then(item => {
         this.items.push(item);
         this.currentItem= null;
        });
   }
-  //@TODO
-  // use(id: number): void{
-
-  // }
-
+  
   // delete(item: Item): void {
   //   this.itemService
   //       .delete(item.id)

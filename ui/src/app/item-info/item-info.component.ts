@@ -28,8 +28,14 @@ export class ItemInfoComponent implements OnInit{
   }
 
   goBack(): void {
-  this.location.back();
+    this.location.back();
   }
+
+
+  useItem(item: Item): void{
+    this.itemService.use(item).then(() => item);
+  }
+
 
   // save(): void {
   //   this.itemService.update(this.item)

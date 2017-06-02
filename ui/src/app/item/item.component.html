@@ -1,5 +1,15 @@
 <h2>Item Inventory</h2>
 
+<p>Create a new Item:</p>
+<form>
+	<label>Name:</label> <input #newName />
+	<label>Description:</label> <input #newDesc />
+	<label>Quantity:</label> <input #newQuantity />
+
+	<button (click)="newItem( newQuantity.value, newName.value, newDesc.value); newQuantity.value=''; newName.value=''; newDesc.value=''">New</button>
+
+ </form>
+
 <ul class="items">
   <li *ngFor="let item of items">
   <a [routerLink]="['/items', item.id]" (click)="onSelect(item)" [class.selected]="item === currentItem">

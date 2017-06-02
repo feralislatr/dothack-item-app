@@ -27,18 +27,20 @@ var ItemComponent = (function () {
         console.log(this.items);
         this.itemService.getItems().then(function (items) { return _this.items = items; });
     };
-    //bring up item modal
-    ItemComponent.prototype.getInfo = function () {
-        this.router.navigate(['/info', this.currentItem.id]);
-    };
+    // //bring up item modal
+    // getInfo(): void {
+    //   this.router.navigate(['/info', this.currentItem.id]);
+    // }
     //@TODO
-    ItemComponent.prototype.create = function (name) {
+    ItemComponent.prototype.newItem = function (quantity, name, desc) {
         var _this = this;
         name = name.trim();
-        if (!name) {
+        desc = desc.trim();
+        if (!quantity || !name || !desc) {
+            console.log("not enough things");
             return;
         }
-        this.itemService.create(name)
+        this.itemService.create(quantity, name, desc)
             .then(function (item) {
             _this.items.push(item);
             _this.currentItem = null;

@@ -16,7 +16,18 @@ var ItemService = (function () {
         this.http = http;
         this.itemUrl = 'http://localhost:4200/api/items';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
+        this.currId = 4;
     }
+    ItemService.prototype.getId = function () {
+        // console.log("getting id");
+        // var items = this.http.get(this.itemUrl);
+        // items.subscribe(itemsArr => itemsArr = itemsArr);
+        // var currId = (this.itemsArr.slice(-1)[0]).id;
+        // currId++;
+        // console.log("the next id will be"+currId);
+        this.currId += 1;
+        return this.currId;
+    };
     //get one item
     ItemService.prototype.getItem = function (id) {
         var url = this.itemUrl + "/" + id;
@@ -37,7 +48,7 @@ var ItemService = (function () {
         console.error('An error occurred', error);
         return Promise.reject(error.message || error);
     };
-    //  	update(item: Item): Promise<Item> {
+    // update(item: Item): Promise<Item> {
     //   const url = `${this.itemUrl}/${item.id}`;
     //   return this.http
     //     .put(url, JSON.stringify(item), {headers: this.headers})
@@ -45,18 +56,26 @@ var ItemService = (function () {
     //     .then(() => item)
     //     .catch(this.handleError);
     // }
-    // use(item: Item): Promise<void>{
-    // 	const url = `${this.itemUrl}/${item.id}`;
-    // 	return this.http
-    // 		.put(url, JSON.stringify(item), {headers: this.headers})
-    // 		.toPromise()
-    //     	.then(() => null)
-    //     	.catch(this.handleError);
-    // }
-    //@TODO
-    ItemService.prototype.create = function (name) {
+    ItemService.prototype.use = function (item) {
+        var url = this.itemUrl + "/" + item.id + "/use";
         return this.http
-            .post(this.itemUrl, JSON.stringify({ name: name }), { headers: this.headers })
+            .put(url, JSON.stringify(item), { headers: this.headers })
+            .toPromise()
+            .then(function () { return item; });
+        //.catch(this.handleError);
+    };
+    ItemService.prototype.discard = function (item) {
+        var url = this.itemUrl + "/" + item.id + "/discard";
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; });
+    };
+    //get prev id and increment by 1
+    ItemService.prototype.create = function (quantity, name, desc) {
+        var url = this.itemUrl + "/new";
+        var newId = this.getId();
+        return this.http
+            .post(url, JSON.stringify({ id: newId, quantity: quantity, name: name, desc: desc }), { headers: this.headers })
             .toPromise()
             .then(function (res) { return res.json(); })
             .catch(this.handleError);

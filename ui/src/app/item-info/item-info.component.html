@@ -2,7 +2,8 @@
 	<button (click)="goBack()">Back</button>
 	<h4>{{item.name}}</h4>
 	<p>{{item.desc}}</p>
+	<h6>{{item.quantity}}</h6>
 
-	<button (click)="use(item)" >Use</button>
-	<button (click)="discard(item)" >Discard</button>
+	<button (click)="useItem(item)" >Use</button>
+	<button (click)="discardItem(item)" >Discard</button>
 </div>

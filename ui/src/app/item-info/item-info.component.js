@@ -29,6 +29,9 @@ var ItemInfoComponent = (function () {
     ItemInfoComponent.prototype.goBack = function () {
         this.location.back();
     };
+    ItemInfoComponent.prototype.useItem = function (item) {
+        this.itemService.use(item).then(function () { return item; });
+    };
     return ItemInfoComponent;
 }());
 __decorate([
