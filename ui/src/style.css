@@ -1,0 +1,45 @@
+@import url(https://fonts.googleapis.com/css?family=Fredoka+One|Slabo+27px|Bree+Serif|Codystar|Dynalight|Monsterrat);
+
+body{
+	font-family: 'Slabo 27px', serif;
+	color: #333;
+	font-size: 1.25em;
+}
+
+.page-wrapper{
+	margin: 0 auto;
+	position: relative;
+	padding: 0;
+	width:95%;
+}
+
+h1{
+	font-size: 9.5em;
+	
+
+}
+
+h2{
+	font-size: 3em;
+	font-weight: 700;
+
+}
+
+
+
+h3{
+	font-size: 2.9em;
+	
+}
+
+a {
+  color:teal;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all ease .5s;
+}
+
+a:hover {
+  color:#333;
+  border-color: #333;
+}

@@ -4,16 +4,13 @@ services:
     build: db
     ports:
      - "27017:27017"
+    command: "--smallfiles"
   api:
     build: api
     ports:
-     - "3000:3000"
-    depends_on:
-     - ui
-    links:
-     - db 
+     - "4200:4200"
   ui:
     build: ui
     ports:
-     - "8080:8080"
+     - "3000:3000"
 

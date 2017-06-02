@@ -1,0 +1,65 @@
+#home{
+	/*background:url(../../../img/hack1.jpg) no-repeat top center fixed;*/
+	/*background-size:cover;*/
+	height: 100%
+    width: 100%;
+	z-index:1;
+	margin-left: 20px;
+    color: white;
+}
+
+#home > img {
+	position:absolute;
+	left:0;
+	right:0;
+	top:0;
+	bottom:0;
+	filter: brightness(60%);
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+}
+
+a{
+	color: #5f8dbf;
+}
+
+ a:hover{
+	color:#657488;
+	border-color: #657488;
+	cursor: pointer;
+}
+
+h1 > a{
+	color: #ebebeb;
+	border: none;
+}
+h1 > a:hover{
+	text-shadow: 1px 3px 15px #ccc;
+	border: none;
+}
+.page-wrapper{
+	z-index: 2;	
+}
+
+h1,
+h2,
+h3{
+	font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    color:#ebebeb;
+}
+
+
+h1{
+	font-size: 6em;
+	margin: 0 auto;
+	margin-top: 35vh;
+
+}
+
+h3{
+	line-height: 25px;
+	margin-top:10px;
+	color:#ccc;
+}

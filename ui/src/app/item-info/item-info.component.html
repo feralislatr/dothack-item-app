@@ -1,0 +1,8 @@
+<div *ngIf="item" class="modal">
+	<button (click)="goBack()">Back</button>
+	<h4>{{item.name}}</h4>
+	<p>{{item.desc}}</p>
+
+	<button (click)="use(item)" >Use</button>
+	<button (click)="discard(item)" >Discard</button>
+</div>

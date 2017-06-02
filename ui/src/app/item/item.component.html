@@ -1,0 +1,10 @@
+<h2>Item Inventory</h2>
+
+<ul class="items">
+  <li *ngFor="let item of items">
+  <a [routerLink]="['/items', item.id]" (click)="onSelect(item)" [class.selected]="item === currentItem">
+    <span>{{item.name}}</span> {{item.quantity}}
+	</a>
+    <!-- <button class="delete" (click)="delete(hero); $event.stopPropagation()">x</button> -->
+  </li>
+</ul>
