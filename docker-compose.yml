@@ -9,8 +9,8 @@ services:
     build: api
     ports:
      - "4200:4200"
-  # ui:
-  #   build: ui
-  #   ports:
-  #    - "3000:3000"
+  ui:
+    build: ui
+    ports:
+     - "3000:3000"
 
