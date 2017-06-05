@@ -32,6 +32,9 @@ var ItemInfoComponent = (function () {
     ItemInfoComponent.prototype.useItem = function (item) {
         this.itemService.use(item).then(function () { return item; });
     };
+    ItemInfoComponent.prototype.discardItem = function (item) {
+        this.itemService.discard(item).then(function () { return null; });
+    };
     return ItemInfoComponent;
 }());
 __decorate([

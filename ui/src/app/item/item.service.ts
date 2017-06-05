@@ -77,7 +77,7 @@ export class ItemService{
 	}
 
 
-
+	//delete item
 	discard(item: Item): Promise<void> {
 	  const url = `${this.itemUrl}/${item.id}/discard`;
 	  return this.http.delete(url, {headers: this.headers})

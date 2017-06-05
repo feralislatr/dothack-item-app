@@ -52,13 +52,13 @@ export class ItemComponent implements OnInit {
        });
   }
   
-  // delete(item: Item): void {
-  //   this.itemService
-  //       .delete(item.id)
-  //       .then(() => {
-  //         this.items = this.items.filter(i => i !== item);
-  //         if (this.currentItem === item) { this.currentItem = null; }
-  //       });
-  // }
+  delete(item: Item): void {
+    this.itemService
+        .delete(item.id)
+        .then(() => {
+          this.items = this.items.filter(i => i !== item);
+          if (this.currentItem === item) { this.currentItem = null; }
+        });
+  }
 
 }

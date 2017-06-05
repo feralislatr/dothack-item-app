@@ -64,6 +64,7 @@ var ItemService = (function () {
             .then(function () { return item; });
         //.catch(this.handleError);
     };
+    //delete item
     ItemService.prototype.discard = function (item) {
         var url = this.itemUrl + "/" + item.id + "/discard";
         return this.http.delete(url, { headers: this.headers })

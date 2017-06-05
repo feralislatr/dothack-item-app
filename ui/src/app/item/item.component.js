@@ -46,6 +46,17 @@ var ItemComponent = (function () {
             _this.currentItem = null;
         });
     };
+    ItemComponent.prototype.delete = function (item) {
+        var _this = this;
+        this.itemService
+            .delete(item.id)
+            .then(function () {
+            _this.items = _this.items.filter(function (i) { return i !== item; });
+            if (_this.currentItem === item) {
+                _this.currentItem = null;
+            }
+        });
+    };
     return ItemComponent;
 }());
 ItemComponent = __decorate([

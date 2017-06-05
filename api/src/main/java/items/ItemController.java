@@ -94,7 +94,7 @@ public class ItemController {
         deletedItem = itemRepo.findOne(id);
     	if (deletedItem != null){
             itemRepo.delete(id);
-           return new ResponseEntity<Item>(HttpStatus.NO_CONTENT); 
+           return new ResponseEntity<Item>(HttpStatus.OK); 
         } else{
             return new ResponseEntity<Item>(HttpStatus.INTERNAL_SERVER_ERROR); 
         }   
@@ -102,21 +102,22 @@ public class ItemController {
 
 
     // //Cooler delete item
-    // @RequestMapping(
-    //     value="/{id}/discard",
-    //     //consumes=MediaType.APPLICATION_JSON_VALUE)
-    // public ResponseEntity<Item> discardItem(@PathVariable("id") String id, @RequestBody Item discardedItem){ //Integer id
-    //   //discardedItem = itemMap.get(id);
-    //     discardedItem = itemRepo.findOne(id);
-    //     if (discardedItem != null){
-    //         System.out.println("Discarded "+ discardedItem.getName());
-    //         itemRepo.delete(id);
-    //        return new ResponseEntity<Item>(HttpStatus.NO_CONTENT); 
-    //     } else{
-    //         return new ResponseEntity<Item>(HttpStatus.INTERNAL_SERVER_ERROR); 
-    //     }
+    @RequestMapping(
+        value="/{id}/discard",
+        method = RequestMethod.DELETE)
+        //consumes=MediaType.APPLICATION_JSON_VALUE)
+    //public ResponseEntity<Item> discardItem(@PathVariable("id") String id, @RequestBody Item discardedItem){ //Integer id
+    public ResponseEntity<Item> deleteItem(@PathVariable("id") String id){ //Integer id
+        Item discardedItem = itemRepo.findOne(id);
+        if (discardedItem != null){
+            System.out.println("Discarded "+ discardedItem.getName());
+            itemRepo.delete(id);
+           return new ResponseEntity<Item>(HttpStatus.OK); 
+        } else{
+            return new ResponseEntity<Item>(HttpStatus.INTERNAL_SERVER_ERROR); 
+        }
         
-    // }
+    }
 
     
 }

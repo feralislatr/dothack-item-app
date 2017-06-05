@@ -36,6 +36,9 @@ export class ItemInfoComponent implements OnInit{
     this.itemService.use(item).then(() => item);
   }
 
+  discardItem(item: Item): void{
+    this.itemService.discard(item).then(() => null);
+  }
 
   // save(): void {
   //   this.itemService.update(this.item)
