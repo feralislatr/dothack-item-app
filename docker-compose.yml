@@ -9,6 +9,8 @@ services:
     build: api
     ports:
      - "4200:4200"
+    depends_on:
+     - ui
   ui:
     build: ui
     ports:

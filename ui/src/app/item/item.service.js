@@ -81,6 +81,12 @@ var ItemService = (function () {
             .then(function (res) { return res.json(); })
             .catch(this.handleError);
     };
+    ItemService.prototype.delete = function (id) {
+        var url = this.itemUrl + "/" + id;
+        return this.http.delete(url, { headers: this.headers })
+            .toPromise()
+            .then(function () { return null; });
+    };
     return ItemService;
 }());
 ItemService = __decorate([
