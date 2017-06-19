@@ -1,4 +1,5 @@
 items/Application.class
 items/ItemController.class
+items/RestConfig.class
 items/ItemRepository.class
 items/Item.class

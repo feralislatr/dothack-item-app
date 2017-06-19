@@ -27,7 +27,6 @@ export class ItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("oye");
     console.log(this.items);
   	this.itemService.getItems().then(items => this.items = items);
   }
@@ -37,7 +36,6 @@ export class ItemComponent implements OnInit {
   //   this.router.navigate(['/info', this.currentItem.id]);
   // }
 
-  //@TODO
   newItem(quantity: number, name: string, desc: string): void {
     name = name.trim();
     desc = desc.trim();

@@ -1,4 +1,4 @@
-import { Injectable }    from '@angular/core';
+import { Injectable, Input }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
 import { ItemComponent } from './item.component';
@@ -16,6 +16,9 @@ export class ItemService{
 	private currId = 4;
 
 	itemsArr: Item[];
+	
+	@Input() //test
+	newId: number = 4;
 
 	constructor(private http: Http){
 	}
@@ -85,15 +88,19 @@ export class ItemService{
 	    .then(() => null)
 	}
 
+	
+
 	//get prev id and increment by 1
 	create(quantity: number, name: string, desc: string): Promise<Item> {
 		const url = `${this.itemUrl}/new`;
-		var newId = this.getId();
+		var newId = this.newId;
+		newId++;
  		return this.http
     	 .post(url, JSON.stringify({id: newId, quantity: quantity, name: name, desc: desc}), {headers: this.headers})
     	 .toPromise()
     	 .then(res => res.json())
     	 .catch(this.handleError);
+
 	}
     
     delete(id: number): Promise<void> {

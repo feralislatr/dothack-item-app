@@ -63,9 +63,6 @@ public class Application implements CommandLineRunner {
 
 		}
 
-		System.out.println("Item found with findByName('Sprite Ocarina'):");
-		System.out.println("----------------------------");
-		System.out.println(repository.findByName("Sprite Ocarina"));
 
 
 

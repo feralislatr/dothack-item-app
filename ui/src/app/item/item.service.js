@@ -17,6 +17,7 @@ var ItemService = (function () {
         this.itemUrl = 'http://localhost:4200/api/items';
         this.headers = new http_1.Headers({ 'Content-Type': 'application/json' });
         this.currId = 4;
+        this.newId = 4;
     }
     ItemService.prototype.getId = function () {
         // console.log("getting id");
@@ -74,7 +75,8 @@ var ItemService = (function () {
     //get prev id and increment by 1
     ItemService.prototype.create = function (quantity, name, desc) {
         var url = this.itemUrl + "/new";
-        var newId = this.getId();
+        var newId = this.newId;
+        newId++;
         return this.http
             .post(url, JSON.stringify({ id: newId, quantity: quantity, name: name, desc: desc }), { headers: this.headers })
             .toPromise()
@@ -89,6 +91,11 @@ var ItemService = (function () {
     };
     return ItemService;
 }());
+__decorate([
+    core_1.Input() //test
+    ,
+    __metadata("design:type", Number)
+], ItemService.prototype, "newId", void 0);
 ItemService = __decorate([
     core_1.Injectable(),
     __metadata("design:paramtypes", [http_1.Http])

@@ -23,7 +23,6 @@ var ItemComponent = (function () {
     };
     ItemComponent.prototype.ngOnInit = function () {
         var _this = this;
-        console.log("oye");
         console.log(this.items);
         this.itemService.getItems().then(function (items) { return _this.items = items; });
     };
@@ -31,7 +30,6 @@ var ItemComponent = (function () {
     // getInfo(): void {
     //   this.router.navigate(['/info', this.currentItem.id]);
     // }
-    //@TODO
     ItemComponent.prototype.newItem = function (quantity, name, desc) {
         var _this = this;
         name = name.trim();

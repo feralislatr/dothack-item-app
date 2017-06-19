@@ -1,7 +1,5 @@
 package items;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Collection;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +19,15 @@ public class ItemController {
 
     @Autowired
     ItemRepository itemRepo;
+
+    private String handleId(){
+        //@TODO: case for if empty
+         int id = itemRepo.findAll().size();
+         id++;
+         String newId = Integer.toString(id);
+         return newId;
+    }
+
 
     // Get all items
     @RequestMapping(
@@ -42,13 +49,14 @@ public class ItemController {
     	return new ResponseEntity<Item>(item, HttpStatus.OK);
     }
 
+
     //Create item
     @RequestMapping(
     	value="/new",
     	method=RequestMethod.POST,
-    	consumes=MediaType.APPLICATION_JSON_VALUE,
     	produces=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> newItem(@RequestBody Item item){
+        item.setId(handleId());
     	Item createdItem = itemRepo.save(item);
     	return new ResponseEntity<Item>(createdItem, HttpStatus.CREATED);
 
@@ -58,7 +66,6 @@ public class ItemController {
     @RequestMapping(
     	value="/{id}/use")
     public ResponseEntity<Item> useItem(@PathVariable("id") String id){ //Integer id
-    	//Item item = itemMap.get(id);
         Item item = itemRepo.findOne(id);
     	if (item.getQuantity() == 1){ //changed from 0
     		System.out.println("You have no more "+ item.getName()+"s");
@@ -90,7 +97,6 @@ public class ItemController {
         method=RequestMethod.DELETE,
     	consumes=MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Item> deleteItem(@PathVariable("id") String id, @RequestBody Item deletedItem){ //Integer id
-    	//deletedItem = itemMap.get(id);
         deletedItem = itemRepo.findOne(id);
     	if (deletedItem != null){
             itemRepo.delete(id);
