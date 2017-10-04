@@ -2,15 +2,19 @@ version: '2'
 services:
   db: 
     build: db
-    ports:
-     - "27017:27017"
+    expose:
+     - 27017
     command: "--smallfiles"
+    networks:
+      - backbone
   api:
     build: api
     ports:
-     - "4200:4200"
+     - 4200
   ui:
     build: ui
     ports:
-     - "3000:3000"
-
+     - 3000:3000
+networks:
+  backbone:
+    driver: bridge
