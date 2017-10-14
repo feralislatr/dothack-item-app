@@ -20,7 +20,5 @@ services:
     networks:
      - backbone
 networks:
-  default:
-    external:
-      name: backbone
- #     driver: bridge
+  backbone:
+    external: true
