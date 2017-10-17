@@ -9,7 +9,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ItemService{
 
-	private itemUrl = 'http://api:4200/api/items';
+	private itemUrl = 'http://api:4200/api/items'; 
+	//private itemUrl = 'http://52.55.50.147:4200/api/items'; //currently needs to be instance ip 
 
 	private headers = new Headers({'Content-Type': 'application/json'});
 
