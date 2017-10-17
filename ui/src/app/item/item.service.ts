@@ -9,7 +9,9 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class ItemService{
 
-	//private itemUrl = 'http://api:4200/api/items'; 
+	//private itemUrl = 'http://api:4200/api/items'; //net::ERR_NAME_NOT_RESOLVED 
+	//private itemUrl = 'http://localhost:4200/api/items';  //works locally, not in ec2
+	
 	private itemUrl = 'http://52.55.50.147:4200/api/items'; //currently needs to be instance ip 
 
 	private headers = new Headers({'Content-Type': 'application/json'});
